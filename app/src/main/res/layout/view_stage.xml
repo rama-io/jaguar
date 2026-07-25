@@ -33,25 +33,85 @@
             style="@style/Text" />
     </LinearLayout>
 
-    <TextView
-        style="@style/H1_center"
-        android:textColor="@color/h1"
-        android:layout_marginBottom="@dimen/space_between_elements"
-        android:text="Hola" />
-
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_weight="1"
         style="@style/VerticalListDivided">
 
-    </LinearLayout>
-
-    <LinearLayout style="@style/HorizontalListDivided">
-
         <TextView
+            style="@style/H2_center"
+            android:textColor="@color/h1"
+            android:layout_marginBottom="@dimen/space_between_elements"
+            android:text="Hola" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            style="@style/HorizontalListDivided">
+
+            <FrameLayout
+                android:id="@+id/prev_btn"
+                style="@style/ImgFrame">
+
+                <ImageView
+                    android:src="@drawable/px_prev"
+                    android:tint="@color/foreground"
+                    android:contentDescription="prev"
+                    style="@style/Icon24" />
+            </FrameLayout>
+
+            <com.rama.jaguar.BrailleBlock
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <FrameLayout
+                android:id="@+id/next_btn"
+                style="@style/ImgFrame">
+
+                <ImageView
+                    android:src="@drawable/px_next"
+                    android:tint="@color/foreground"
+                    android:contentDescription="prev"
+                    style="@style/Icon24" />
+            </FrameLayout>
+        </LinearLayout>
+
+        <View style="@style/Separator" />
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="H" />
+            style="@style/HorizontalListDivided">
+
+            <com.rama.jaguar.SmallBrailleBlock
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.rama.jaguar.SmallBrailleBlock
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.rama.jaguar.SmallBrailleBlock
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.rama.jaguar.SmallBrailleBlock
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.rama.jaguar.SmallBrailleBlock
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.rama.jaguar.SmallBrailleBlock
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.rama.jaguar.SmallBrailleBlock
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

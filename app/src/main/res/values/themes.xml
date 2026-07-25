@@ -3,4 +3,42 @@
     <style name="Theme.Jaguar" parent="Theme.Rama.Base">
         <item name="bgColor">@color/bg_1</item>
     </style>
+
+    <style name="BrailleDot">
+        <item name="contentDescription">Braille Dot</item>
+        <item name="android:tint">@color/bg_3</item>
+        <item name="android:src">@drawable/px_disc</item>
+        <item name="android:layout_width">65sp</item>
+        <item name="android:layout_height">65sp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="BrailleImgFrame">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">6sp</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="BrailleSmallDot">
+        <item name="contentDescription">Braille Dot</item>
+        <item name="android:tint">@color/bg_3</item>
+        <item name="android:src">@drawable/px_disc</item>
+        <item name="android:layout_width">8sp</item>
+        <item name="android:layout_height">8sp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="BrailleSmallImgFrame">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="ImgFrame">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">12sp</item>
+        <item name="android:background">@color/bg_3</item>
+    </style>
 </resources>
