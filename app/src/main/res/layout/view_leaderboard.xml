@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:background="@color/bg_1"
+    android:layout_height="match_parent"
+    style="@style/VerticalListDivided">
+
+    <LinearLayout style="@style/HorizontalListDivided">
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <FrameLayout
+            android:id="@+id/open_settings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/bg_1"
+            android:paddingTop="12sp"
+            android:paddingBottom="12sp">
+
+            <ImageView
+                android:src="@drawable/px_cog"
+                android:tint="@color/foreground"
+                android:contentDescription="@string/altdescr_open_settings"
+                style="@style/Icon24" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <TextView
+        style="@style/H2"
+        android:textColor="@color/h1"
+        android:layout_marginBottom="@dimen/space_between_elements"
+        android:text="Leaderboard" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/VerticalListDivided">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/HorizontalListDivided">
+
+                <TextView
+                    android:id="@+id/counter"
+                    android:layout_width="wrap_content"
+                    android:text="1."
+                    android:textColor="@color/disabled"
+                    style="@style/Text" />
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Name"
+                    style="@style/Text" />
+
+                <TextView
+                    android:id="@+id/lvl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="lv3"
+                    style="@style/Text" />
+
+                <TextView
+                    android:id="@+id/matches"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2/60"
+                    style="@style/Text" />
+
+                <TextView
+                    android:id="@+id/time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1:00"
+                    style="@style/Text" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Choose a level to practice:"
+        style="@style/H3" />
+
+    <LinearLayout style="@style/HorizontalListDivided">
+
+        <Button
+            android:id="@+id/lvl1"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="1"
+            style="@style/BTN2" />
+
+        <Button
+            android:id="@+id/lvl2"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="2"
+            style="@style/BTN2" />
+
+        <Button
+            android:id="@+id/lvl3"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="3"
+            style="@style/BTN2" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,1 @@
+Built entirely in native Kotlin, Jaguar runs fully on-device, avoids tracking and no internet access.

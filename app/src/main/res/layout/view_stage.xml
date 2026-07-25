@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:background="@color/bg_1"
+    android:layout_height="match_parent"
+    style="@style/VerticalListDivided">
+
+    <LinearLayout style="@style/HorizontalListDivided">
+
+        <FrameLayout
+            android:id="@+id/close_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/bg_1"
+            android:paddingTop="12sp"
+            android:paddingBottom="12sp">
+
+            <ImageView
+                android:src="@drawable/px_times"
+                android:tint="@color/foreground"
+                android:contentDescription="@string/altdescr_close"
+                style="@style/Icon24" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="1:00"
+            style="@style/Text" />
+    </LinearLayout>
+
+    <TextView
+        style="@style/H1_center"
+        android:textColor="@color/h1"
+        android:layout_marginBottom="@dimen/space_between_elements"
+        android:text="Hola" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/VerticalListDivided">
+
+    </LinearLayout>
+
+    <LinearLayout style="@style/HorizontalListDivided">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="H" />
+    </LinearLayout>
+
+</LinearLayout>

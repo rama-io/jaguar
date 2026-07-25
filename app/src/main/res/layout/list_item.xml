@@ -1,0 +1,42 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/app_row_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    style="@style/HorizontalListDivided">
+
+    <TextView
+        android:id="@+id/counter"
+        android:layout_width="wrap_content"
+        android:text="1."
+        android:textColor="@color/disabled"
+        style="@style/Text" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Name"
+        style="@style/Text" />
+
+    <TextView
+        android:id="@+id/lvl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="lv3"
+        style="@style/Text" />
+
+    <TextView
+        android:id="@+id/matches"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2/60"
+        style="@style/Text" />
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1:00"
+        style="@style/Text" />
+</LinearLayout>
