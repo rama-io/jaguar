@@ -76,6 +76,13 @@
     <string name="altdescr_shuffle_nav">Shuffle</string>
     <string name="altdescr_close">Close</string>
 
+    <!-- Braille game -->
+    <string name="altdescr_prev_question">Erase last letter</string>
+    <string name="altdescr_skip_question">Submit letter</string>
+    <string name="toast_grade3_unavailable">Grade 3 isn\'t a standardized braille system yet — practicing with Grade 1 &amp; 2 words for now</string>
+    <string name="toast_tap_some_dots">Tap some dots first</string>
+    <string name="label_choose_level">Choose a level to practice:</string>
+
     <!-- APP -->
     <string name="app_name" translatable="false">@string/product_jaguar</string>
     <string name="app_desc">A minimal, privacy-first focus session app designed to help you stay present and intentional with your time.</string>

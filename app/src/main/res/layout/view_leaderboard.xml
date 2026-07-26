@@ -40,21 +40,16 @@
         android:layout_weight="1">
 
         <LinearLayout
+            android:id="@+id/leaderboard_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/VerticalListDivided">
-
-            <com.rama.jaguar.ListItem
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
+            style="@style/VerticalListDivided" />
     </ScrollView>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Choose a level to practice:"
+        android:text="@string/label_choose_level"
         style="@style/H3" />
 
     <LinearLayout style="@style/HorizontalListDivided">

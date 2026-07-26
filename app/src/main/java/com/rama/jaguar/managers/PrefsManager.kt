@@ -3,6 +3,7 @@ package com.rama.jaguar.managers
 import android.content.Context
 import android.content.SharedPreferences
 import com.rama.bohio.objects.PrefTheme
+import com.rama.jaguar.LeaderboardEntry
 import com.rama.bohio.managers.PrefsManager as BohioPrefsManager
 
 class PrefsManager private constructor(context: Context) : BohioPrefsManager(context) {
@@ -15,6 +16,25 @@ class PrefsManager private constructor(context: Context) : BohioPrefsManager(con
         const val ROULETTE_TIMER = "roulette:timer"
         const val ROULETTE_LIST = "roulette:list"
         const val SESSION_COLLAPSED_IDS = "session:collapsed_ids"
+        const val LEADERBOARD_ENTRIES = "leaderboard:entries"
+    }
+
+    private val maxLeaderboardEntries = 50
+
+    fun getLeaderboard(grade: Int? = null): List<LeaderboardEntry> {
+        val all = LeaderboardEntry.listFromJson(getString(FileKeys.LEADERBOARD_ENTRIES, ""))
+        val filtered = if (grade == null) all else all.filter { it.grade == grade }
+        return filtered.sortedWith(
+            compareByDescending<LeaderboardEntry> { it.score }.thenBy { it.timeMillis }
+        )
+    }
+
+    fun addLeaderboardEntry(entry: LeaderboardEntry) {
+        val all = LeaderboardEntry.listFromJson(getString(FileKeys.LEADERBOARD_ENTRIES, ""))
+        val updated = (all + entry)
+            .sortedWith(compareByDescending<LeaderboardEntry> { it.score }.thenBy { it.timeMillis })
+            .take(maxLeaderboardEntries)
+        setString(FileKeys.LEADERBOARD_ENTRIES, LeaderboardEntry.listToJson(updated))
     }
 
     // Local InitPrefs

@@ -28,8 +28,13 @@
             android:layout_weight="1" />
 
         <TextView
+            android:id="@+id/progress_text"
             android:layout_width="wrap_content"
-            android:text="1:00"
+            style="@style/Text" />
+
+        <TextView
+            android:id="@+id/time_text"
+            android:layout_width="wrap_content"
             style="@style/Text" />
     </LinearLayout>
 
@@ -39,10 +44,10 @@
         style="@style/VerticalListDivided">
 
         <TextView
+            android:id="@+id/prompt_text"
             style="@style/H2_center"
             android:textColor="@color/accent_3"
-            android:layout_marginBottom="@dimen/space_between_elements"
-            android:text="Hola" />
+            android:layout_marginBottom="@dimen/space_between_elements" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -57,11 +62,12 @@
                 <ImageView
                     android:src="@drawable/px_prev"
                     android:tint="@color/foreground"
-                    android:contentDescription="prev"
+                    android:contentDescription="@string/altdescr_prev_question"
                     style="@style/Icon24" />
             </FrameLayout>
 
             <com.rama.jaguar.BrailleBlock
+                android:id="@+id/braille_display"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
@@ -72,7 +78,7 @@
                 <ImageView
                     android:src="@drawable/px_next"
                     android:tint="@color/foreground"
-                    android:contentDescription="prev"
+                    android:contentDescription="@string/altdescr_skip_question"
                     style="@style/Icon24" />
             </FrameLayout>
         </LinearLayout>
@@ -85,30 +91,37 @@
             style="@style/HorizontalListDivided">
 
             <com.rama.jaguar.SmallBrailleBlock
+                android:id="@+id/choice_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <com.rama.jaguar.SmallBrailleBlock
+                android:id="@+id/choice_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <com.rama.jaguar.SmallBrailleBlock
+                android:id="@+id/choice_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <com.rama.jaguar.SmallBrailleBlock
+                android:id="@+id/choice_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <com.rama.jaguar.SmallBrailleBlock
+                android:id="@+id/choice_5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <com.rama.jaguar.SmallBrailleBlock
+                android:id="@+id/choice_6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <com.rama.jaguar.SmallBrailleBlock
+                android:id="@+id/choice_7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>

@@ -6,6 +6,7 @@
     style="@style/VerticalListDivided">
 
     <GridLayout
+        android:id="@+id/small_braille_grid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:columnCount="2"
@@ -57,6 +58,7 @@
     </GridLayout>
 
     <TextView
+        android:id="@+id/label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="HHH"
