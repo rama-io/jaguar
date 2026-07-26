@@ -11,11 +11,6 @@ import android.widget.TextView
 import com.rama.bohio.managers.ThemeManager
 import com.rama.bohio.managers.PrefsManager as BohioPrefsManager
 
-/**
- * A small braille cell used to display one letter the player has already typed, in the row
- * below the main input block. Shows both the dot pattern that was entered and the letter it
- * reads as, tinted to show whether it was correct.
- */
 class SmallBrailleBlock @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
@@ -50,29 +45,33 @@ class SmallBrailleBlock @JvmOverloads constructor(
             }
         }
     }
-
-    /** Convenience for looking a sign up by id (e.g. from XML `value`). */
+    
     fun setValue(text: String) {
         val sign = BrailleData.find(text)
         setEntry(sign?.dots ?: emptySet(), sign?.display ?: text)
     }
 
-    /** Shows the given dot pattern and its printed label directly (no lookup involved). */
     fun setEntry(dots: Set<Int>, label: String) {
         this.dots = dots
         findViewById<TextView>(R.id.label)?.text = label
         render()
     }
 
-    /** Highlights this cell green/red after an answer is checked, or resets it neutral. */
     fun setState(state: State) {
         this.state = state
         render()
     }
 
     private fun render() {
-        val palette = ThemeManager.paletteFor(BohioPrefsManager.getInstance(context).getTheme(), context)
-        val onColor = ColorStateList.valueOf(palette.foreground)
+        val palette =
+            ThemeManager.paletteFor(BohioPrefsManager.getInstance(context).getTheme(), context)
+        val onColor = ColorStateList.valueOf(
+            when (state) {
+                State.NEUTRAL -> palette.bg_4
+                State.CORRECT -> palette.accent_1
+                State.INCORRECT -> palette.danger
+            }
+        )
         val offColor = ColorStateList.valueOf(palette.bg_3)
 
         standardDotToViewId.forEach { (dotNumber, viewId) ->
@@ -80,12 +79,5 @@ class SmallBrailleBlock @JvmOverloads constructor(
             val image = frame?.getChildAt(0) as? ImageView ?: return@forEach
             image.imageTintList = if (dotNumber in dots) onColor else offColor
         }
-
-        val bgColor = when (state) {
-            State.NEUTRAL -> palette.bg_4
-            State.CORRECT -> palette.accent_1
-            State.INCORRECT -> palette.danger
-        }
-        findViewById<android.view.View>(R.id.small_braille_grid)?.setBackgroundColor(bgColor)
     }
 }

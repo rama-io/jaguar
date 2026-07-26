@@ -129,7 +129,9 @@ object BrailleData {
     // "what letter does this pattern read as" we prefer the plain letter when ambiguous.
     private val byDots: Map<Set<Int>, BrailleSign> by lazy {
         val map = LinkedHashMap<Set<Int>, BrailleSign>()
-        (GRADE_1 + GRADE_2 + GRADE_3).forEach { map.putIfAbsent(it.dots, it) }
+        (GRADE_1 + GRADE_2 + GRADE_3).forEach { sign ->
+            if (!map.containsKey(sign.dots)) map[sign.dots] = sign
+        }
         map
     }
 

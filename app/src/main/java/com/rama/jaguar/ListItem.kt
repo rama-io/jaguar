@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.widget.LinearLayout
 import android.widget.TextView
 
-/** A single leaderboard row. */
 class ListItem @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
@@ -26,12 +25,10 @@ class ListItem @JvmOverloads constructor(
         }
     }
 
-    /** Kept for simple XML-driven `value` usage; just sets the name column. */
     fun setValue(text: String) {
         findViewById<TextView>(R.id.name)?.text = text
     }
 
-    /** Populates a full leaderboard row. [rank] is 1-based. */
     fun bind(rank: Int, entry: LeaderboardEntry) {
         findViewById<TextView>(R.id.counter).text = "$rank."
         findViewById<TextView>(R.id.name).text = entry.name
