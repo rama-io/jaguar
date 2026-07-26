@@ -6,6 +6,7 @@ import android.os.Handler
 import android.os.Looper
 import android.view.View
 import android.view.WindowManager
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import com.rama.bohio.objects.PrefKeys
@@ -21,14 +22,14 @@ import com.rama.jaguar.SmallBrailleBlock
 /**
  * Practice loop: the target word is shown in print at the top. The player taps dots on the big
  * [BrailleBlock] to build each cell, then hits "next" to submit it (checked against the expected
- * cell and appended to the row of typed cells below) or "prev" to erase the last submitted cell.
+ * cell and appended to the row of typed cells below, labelled with the letter it actually reads
+ * as) or "prev" to erase the last submitted cell. The typed-cell row grows to match the word.
  */
 class StageActivity : CsActivity() {
 
     companion object {
         const val EXTRA_GRADE = "extra_grade"
         private const val ROUND_COUNT = 15
-        private const val MAX_WORD_LENGTH = 7 // matches the 7 slots in view_stage.xml
         private const val ADVANCE_DELAY_MS = 500L
     }
 
@@ -52,7 +53,8 @@ class StageActivity : CsActivity() {
     private lateinit var promptText: TextView
     private lateinit var timeText: TextView
     private lateinit var progressText: TextView
-    private lateinit var typedSlots: List<SmallBrailleBlock>
+    private lateinit var typedRow: LinearLayout
+    private var typedSlots: List<SmallBrailleBlock> = emptyList()
     private lateinit var prevBtn: View
     private lateinit var nextBtn: View
 
@@ -82,11 +84,7 @@ class StageActivity : CsActivity() {
         promptText = findViewById(R.id.prompt_text)
         timeText = findViewById(R.id.time_text)
         progressText = findViewById(R.id.progress_text)
-        typedSlots = listOf(
-            findViewById(R.id.choice_1), findViewById(R.id.choice_2), findViewById(R.id.choice_3),
-            findViewById(R.id.choice_4), findViewById(R.id.choice_5), findViewById(R.id.choice_6),
-            findViewById(R.id.choice_7)
-        )
+        typedRow = findViewById(R.id.typed_row)
         prevBtn = findViewById(R.id.prev_btn)
         nextBtn = findViewById(R.id.next_btn)
 
@@ -107,6 +105,9 @@ class StageActivity : CsActivity() {
         } else {
             window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         }
+        // Dot tints are computed live from the theme on each render, but refresh in case the
+        // player changed the theme in Settings and came back mid-session.
+        brailleBlock.refreshTheme()
     }
 
     override fun onDestroy() {
@@ -119,7 +120,7 @@ class StageActivity : CsActivity() {
     // Setup
 
     private fun buildWordList(grade: Int): List<BrailleWord> {
-        val pool = BrailleWordBank.wordsForGrade(grade).filter { it.cells.size <= MAX_WORD_LENGTH }
+        val pool = BrailleWordBank.wordsForGrade(grade)
         return (1..ROUND_COUNT).map { pool.random() }
     }
 
@@ -127,22 +128,21 @@ class StageActivity : CsActivity() {
         wordIndex = index
         cellIndex = 0
         awaitingAdvance = false
-        correctCells = BooleanArray(words[index].cells.size)
-
         val word = words[index]
+        correctCells = BooleanArray(word.cells.size)
+
         promptText.text = word.text
         progressText.text = "${index + 1}/${words.size}"
         brailleBlock.reset()
 
-        typedSlots.forEachIndexed { i, slot ->
-            if (i < word.cells.size) {
-                slot.visibility = View.VISIBLE
-                slot.setPattern(emptySet())
-                slot.setState(SmallBrailleBlock.State.NEUTRAL)
-            } else {
-                slot.visibility = View.INVISIBLE
-            }
+        // Rebuild the typed-cell row so it always matches this word's length exactly.
+        typedRow.removeAllViews()
+        typedSlots = word.cells.map {
+            val slot = SmallBrailleBlock(this)
+            typedRow.addView(slot)
+            slot
         }
+
         updateNavButtons()
     }
 
@@ -161,8 +161,12 @@ class StageActivity : CsActivity() {
         val correct = entered == expected.dots
         correctCells[cellIndex] = correct
 
+        // Show exactly what the player typed, labelled with whatever letter/sign that
+        // pattern actually reads as (so a wrong answer is a lesson, not just a red mark).
+        val enteredSign = BrailleData.findByDots(entered)
+        val label = enteredSign?.display ?: "?"
         val slot = typedSlots[cellIndex]
-        slot.setPattern(expected.dots)
+        slot.setEntry(entered, label)
         slot.setState(if (correct) SmallBrailleBlock.State.CORRECT else SmallBrailleBlock.State.INCORRECT)
 
         cellIndex++
@@ -181,7 +185,7 @@ class StageActivity : CsActivity() {
         if (awaitingAdvance || cellIndex == 0) return
         cellIndex--
         val slot = typedSlots[cellIndex]
-        slot.setPattern(emptySet())
+        slot.setEntry(emptySet(), "")
         slot.setState(SmallBrailleBlock.State.NEUTRAL)
         brailleBlock.reset()
         updateNavButtons()

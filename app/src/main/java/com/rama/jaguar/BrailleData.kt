@@ -124,7 +124,19 @@ object BrailleData {
         (GRADE_1 + GRADE_2 + GRADE_3).associateBy { it.id }
     }
 
+    // Some grade-2 wordsigns deliberately reuse a grade-1 letter's pattern (that's how
+    // alphabetic wordsigns work in real braille - context decides the meaning). For showing
+    // "what letter does this pattern read as" we prefer the plain letter when ambiguous.
+    private val byDots: Map<Set<Int>, BrailleSign> by lazy {
+        val map = LinkedHashMap<Set<Int>, BrailleSign>()
+        (GRADE_1 + GRADE_2 + GRADE_3).forEach { map.putIfAbsent(it.dots, it) }
+        map
+    }
+
     fun find(id: String): BrailleSign? = byId[id.lowercase()]
+
+    /** Resolves a tapped-out dot pattern back to the sign it represents, if any. */
+    fun findByDots(dots: Set<Int>): BrailleSign? = byDots[dots]
 
     /** Cumulative pool for a given grade: grade 2 practice includes the grade 1 alphabet too. */
     fun signsForGrade(grade: Int): List<BrailleSign> = when (grade) {

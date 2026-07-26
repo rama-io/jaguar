@@ -85,46 +85,18 @@
 
         <View style="@style/Separator" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <HorizontalScrollView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/HorizontalListDivided">
+            android:scrollbars="none">
 
-            <com.rama.jaguar.SmallBrailleBlock
-                android:id="@+id/choice_1"
+            <LinearLayout
+                android:id="@+id/typed_row"
+                android:layout_gravity="center"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <com.rama.jaguar.SmallBrailleBlock
-                android:id="@+id/choice_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <com.rama.jaguar.SmallBrailleBlock
-                android:id="@+id/choice_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <com.rama.jaguar.SmallBrailleBlock
-                android:id="@+id/choice_4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <com.rama.jaguar.SmallBrailleBlock
-                android:id="@+id/choice_5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <com.rama.jaguar.SmallBrailleBlock
-                android:id="@+id/choice_6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <com.rama.jaguar.SmallBrailleBlock
-                android:id="@+id/choice_7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
+                android:layout_height="wrap_content"
+                style="@style/HorizontalListDivided" />
+        </HorizontalScrollView>
     </LinearLayout>
 
 </LinearLayout>

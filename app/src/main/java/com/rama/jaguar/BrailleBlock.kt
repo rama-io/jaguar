@@ -7,9 +7,9 @@ import android.view.LayoutInflater
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.LinearLayout
-import androidx.core.content.ContextCompat
+import com.rama.bohio.managers.ThemeManager
 import com.rama.bohio.util.UiActions
-import com.rama.bohio.R as BohioR
+import com.rama.bohio.managers.PrefsManager as BohioPrefsManager
 
 /**
  * The big, tappable braille cell the player builds an answer with: tapping a dot toggles it
@@ -83,14 +83,18 @@ class BrailleBlock @JvmOverloads constructor(
     /** Clears all dots back to the empty cell. */
     fun reset() = setPattern(emptySet())
 
+    /** Re-reads the active theme and re-tints the dots. Call after a theme change. */
+    fun refreshTheme() = render()
+
     private fun render() {
-        val onColor = ContextCompat.getColor(context, BohioR.color.foreground)
-        val offColor = ContextCompat.getColor(context, BohioR.color.bg_3)
+        val palette = ThemeManager.paletteFor(BohioPrefsManager.getInstance(context).getTheme(), context)
+        val onColor = ColorStateList.valueOf(palette.foreground)
+        val offColor = ColorStateList.valueOf(palette.bg_3)
 
         standardDotToViewId.forEach { (dotNumber, viewId) ->
             val frame = findViewById<FrameLayout>(viewId)
             val image = frame?.getChildAt(0) as? ImageView ?: return@forEach
-            image.imageTintList = ColorStateList.valueOf(if (dotNumber in activeDots) onColor else offColor)
+            image.imageTintList = if (dotNumber in activeDots) onColor else offColor
         }
     }
 }
