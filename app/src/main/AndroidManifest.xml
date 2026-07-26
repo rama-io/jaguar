@@ -10,6 +10,11 @@
 
         <activity
             android:exported="false"
+            android:name=".activities.ScoreActivity"
+            android:label="@string/activity_score" />
+
+        <activity
+            android:exported="false"
             android:name=".activities.StageActivity"
             android:label="@string/activity_stage" />
 

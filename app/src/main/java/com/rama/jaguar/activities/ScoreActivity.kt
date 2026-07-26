@@ -1,6 +1,5 @@
 package com.rama.jaguar.activities
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
@@ -8,20 +7,14 @@ import com.rama.bohio.objects.PrefKeys
 import com.rama.jaguar.CsActivity
 import com.rama.jaguar.R
 
-class StageActivity : CsActivity() {
+class ScoreActivity : CsActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.view_stage)
+        setContentView(R.layout.view_score_submission)
 
         val root = findViewById<View>(R.id.root)
         applyEdgeToEdgePadding(root)
         applyCurrentTheme(root)
-
-        val closeBtn = findViewById<View>(R.id.close_btn)
-        closeBtn.setOnClickListener {
-            startActivity(Intent(this, ScoreActivity::class.java))
-            true
-        }
     }
 
     override fun onResume() {

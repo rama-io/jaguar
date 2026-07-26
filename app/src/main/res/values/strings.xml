@@ -80,5 +80,6 @@
     <string name="app_name" translatable="false">@string/product_jaguar</string>
     <string name="app_desc">A minimal, privacy-first focus session app designed to help you stay present and intentional with your time.</string>
     <string name="activity_stage">Stage</string>
+    <string name="activity_score">Score</string>
 </resources>
 

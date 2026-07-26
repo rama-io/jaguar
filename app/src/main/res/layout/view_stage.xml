@@ -40,7 +40,7 @@
 
         <TextView
             style="@style/H2_center"
-            android:textColor="@color/h1"
+            android:textColor="@color/accent_3"
             android:layout_marginBottom="@dimen/space_between_elements"
             android:text="Hola" />
 
