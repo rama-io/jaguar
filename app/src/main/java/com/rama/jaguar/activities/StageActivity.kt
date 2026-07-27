@@ -90,11 +90,7 @@ class StageActivity : CsActivity() {
 
     override fun onResume() {
         super.onResume()
-        if (prefs.getBoolean(PrefKeys.SYSTEM_PREVENT_SLEEP, false)) {
-            window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-        } else {
-            window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-        }
+        applyKeepScreenOnPref(prefs)
         brailleBlock.refreshTheme()
         typedSlots.forEach { it.refreshTheme() }
     }
@@ -124,7 +120,7 @@ class StageActivity : CsActivity() {
         promptText.text = word.text
         progressText.text = "${index + 1}/${words.size}"
         brailleBlock.reset()
-        
+
         typedRow.removeAllViews()
         typedSlots = word.cells.map {
             val slot = SmallBrailleBlock(this)
@@ -150,8 +146,6 @@ class StageActivity : CsActivity() {
         val correct = entered == expected.dots
         correctCells[cellIndex] = correct
 
-        // Show exactly what the player typed, labelled with whatever letter/sign that
-        // pattern actually reads as (so a wrong answer is a lesson, not just a red mark).
         val enteredSign = BrailleData.findByDots(entered)
         val label = enteredSign?.display ?: "?"
         val slot = typedSlots[cellIndex]

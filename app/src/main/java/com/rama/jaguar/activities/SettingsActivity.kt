@@ -31,6 +31,7 @@ class SettingsActivity : CsActivity() {
 
     override fun onResume() {
         super.onResume()
+        applyKeepScreenOnPref(prefs)
     }
 
     override fun onActivityResult(

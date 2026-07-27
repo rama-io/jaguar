@@ -40,15 +40,7 @@ class LeaderboardActivity : CsActivity() {
 
     override fun onResume() {
         super.onResume()
-        if (prefs.getBoolean(
-                com.rama.bohio.objects.PrefKeys.SYSTEM_PREVENT_SLEEP,
-                false
-            )
-        ) {
-            window.addFlags(android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-        } else {
-            window.clearFlags(android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-        }
+        applyKeepScreenOnPref(prefs)
         refreshLeaderboard()
     }
 

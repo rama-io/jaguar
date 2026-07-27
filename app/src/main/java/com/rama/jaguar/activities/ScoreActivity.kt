@@ -53,7 +53,8 @@ class ScoreActivity : CsActivity() {
         findViewById<Button>(R.id.submit).setOnClickListener {
             val name = nameInput.text?.toString()?.trim().orEmpty()
             if (name.isEmpty()) {
-                Toast.makeText(this, getString(R.string.toast_name_empty), Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.toast_name_empty), Toast.LENGTH_SHORT)
+                    .show()
                 return@setOnClickListener
             }
 
@@ -81,11 +82,7 @@ class ScoreActivity : CsActivity() {
 
     override fun onResume() {
         super.onResume()
-        if (prefs.getBoolean(PrefKeys.SYSTEM_PREVENT_SLEEP, false)) {
-            window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-        } else {
-            window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-        }
+        applyKeepScreenOnPref(prefs)
     }
 
     private fun formatTime(millis: Long): String {

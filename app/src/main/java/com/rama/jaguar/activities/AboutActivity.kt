@@ -36,4 +36,9 @@ class AboutActivity : CsActivity() {
         val nameView = findViewById<TextView>(R.id.name_version)
         nameView.text = getString(BohioR.string.name_version, getString(R.string.app_name), version)
     }
+
+    override fun onResume() {
+        super.onResume()
+        applyKeepScreenOnPref(prefs)
+    }
 }
