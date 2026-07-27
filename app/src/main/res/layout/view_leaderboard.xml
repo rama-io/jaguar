@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/root"
     android:background="@color/bg_1"
     android:layout_height="match_parent"
@@ -22,7 +23,7 @@
 
             <ImageView
                 android:src="@drawable/px_cog"
-                android:tint="@color/foreground"
+                app:tint="@color/foreground"
                 android:contentDescription="@string/altdescr_open_settings"
                 style="@style/Icon24" />
         </FrameLayout>
@@ -32,7 +33,7 @@
         style="@style/H2"
         android:textColor="@color/h1"
         android:layout_marginBottom="@dimen/space_between_elements"
-        android:text="Leaderboard" />
+        android:text="@string/h1_leaderboard" />
 
     <ScrollView
         android:layout_width="match_parent"

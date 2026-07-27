@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/root"
     android:background="@color/bg_1"
     android:layout_height="match_parent"
@@ -17,7 +18,7 @@
 
             <ImageView
                 android:src="@drawable/px_times"
-                android:tint="@color/foreground"
+                app:tint="@color/foreground"
                 android:contentDescription="@string/altdescr_close"
                 style="@style/Icon24" />
         </FrameLayout>
@@ -38,19 +39,16 @@
             <TextView
                 android:id="@+id/score"
                 android:textColor="@color/accent_2"
-                android:text="25/30"
                 style="@style/H1_center" />
 
             <TextView
                 android:id="@+id/time"
                 android:gravity="center"
-                android:text="25:00"
                 style="@style/H2" />
 
             <EditText
                 android:id="@+id/name"
                 android:gravity="center"
-                android:text="name"
                 android:textSize="@dimen/h3"
                 style="@style/EditText" />
         </LinearLayout>
@@ -58,6 +56,6 @@
 
     <Button
         android:id="@+id/submit"
-        android:text="Submit"
+        android:text="@string/label_submit"
         style="@style/BTN1" />
 </LinearLayout>
