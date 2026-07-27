@@ -45,7 +45,7 @@ class SmallBrailleBlock @JvmOverloads constructor(
             }
         }
     }
-    
+
     fun setValue(text: String) {
         val sign = BrailleData.find(text)
         setEntry(sign?.dots ?: emptySet(), sign?.display ?: text)
@@ -61,6 +61,8 @@ class SmallBrailleBlock @JvmOverloads constructor(
         this.state = state
         render()
     }
+
+    fun refreshTheme() = render()
 
     private fun render() {
         val palette =
