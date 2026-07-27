@@ -18,8 +18,7 @@ class SmallBrailleBlock @JvmOverloads constructor(
 ) : LinearLayout(context, attrs, defStyleAttr) {
 
     enum class State { NEUTRAL, CORRECT, INCORRECT }
-
-    // Same row-major -> standard dot numbering mapping as BrailleBlock (see there for detail).
+    
     private val standardDotToViewId = mapOf(
         1 to R.id.small_dot_1,
         2 to R.id.small_dot_3,
@@ -67,9 +66,10 @@ class SmallBrailleBlock @JvmOverloads constructor(
     private fun render() {
         val palette =
             ThemeManager.paletteFor(BohioPrefsManager.getInstance(context).getTheme(), context)
+
         val onColor = ColorStateList.valueOf(
             when (state) {
-                State.NEUTRAL -> palette.bg_4
+                State.NEUTRAL -> palette.foreground
                 State.CORRECT -> palette.accent_1
                 State.INCORRECT -> palette.danger
             }
@@ -81,5 +81,7 @@ class SmallBrailleBlock @JvmOverloads constructor(
             val image = frame?.getChildAt(0) as? ImageView ?: return@forEach
             image.imageTintList = if (dotNumber in dots) onColor else offColor
         }
+
+        findViewById<android.view.View>(R.id.small_braille_grid)?.setBackgroundColor(palette.bg_4)
     }
 }
