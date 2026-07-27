@@ -19,12 +19,6 @@ import com.rama.jaguar.CsActivity
 import com.rama.jaguar.R
 import com.rama.jaguar.SmallBrailleBlock
 
-/**
- * Practice loop: the target word is shown in print at the top. The player taps dots on the big
- * [BrailleBlock] to build each cell, then hits "next" to submit it (checked against the expected
- * cell and appended to the row of typed cells below, labelled with the letter it actually reads
- * as) or "prev" to erase the last submitted cell. The typed-cell row grows to match the word.
- */
 class StageActivity : CsActivity() {
 
     companion object {
@@ -75,11 +69,7 @@ class StageActivity : CsActivity() {
         applyEdgeToEdgePadding(root)
         applyCurrentTheme(root)
 
-        grade = intent.getIntExtra(EXTRA_GRADE, 1).coerceIn(1, 3)
-        if (grade == 3 && BrailleData.GRADE_3.isEmpty()) {
-            Toast.makeText(this, getString(R.string.toast_grade3_unavailable), Toast.LENGTH_LONG).show()
-        }
-
+        grade = intent.getIntExtra(EXTRA_GRADE, 1).coerceIn(1, 2)
         brailleBlock = findViewById(R.id.braille_display)
         promptText = findViewById(R.id.prompt_text)
         timeText = findViewById(R.id.time_text)
@@ -105,8 +95,6 @@ class StageActivity : CsActivity() {
         } else {
             window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         }
-        // Dot tints are computed live from the theme on each render, but refresh in case the
-        // player changed the theme in Settings and came back mid-session.
         brailleBlock.refreshTheme()
         typedSlots.forEach { it.refreshTheme() }
     }
@@ -136,8 +124,7 @@ class StageActivity : CsActivity() {
         promptText.text = word.text
         progressText.text = "${index + 1}/${words.size}"
         brailleBlock.reset()
-
-        // Rebuild the typed-cell row so it always matches this word's length exactly.
+        
         typedRow.removeAllViews()
         typedSlots = word.cells.map {
             val slot = SmallBrailleBlock(this)

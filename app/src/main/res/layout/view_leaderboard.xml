@@ -67,13 +67,6 @@
             android:layout_weight="1"
             android:text="2"
             style="@style/BTN2" />
-
-        <Button
-            android:id="@+id/lvl3"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:text="3"
-            style="@style/BTN2" />
     </LinearLayout>
 
 </LinearLayout>

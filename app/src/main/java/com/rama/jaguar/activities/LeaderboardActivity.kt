@@ -30,7 +30,6 @@ class LeaderboardActivity : CsActivity() {
 
         findViewById<View>(R.id.lvl1).setOnClickListener { startStage(1) }
         findViewById<View>(R.id.lvl2).setOnClickListener { startStage(2) }
-        findViewById<View>(R.id.lvl3).setOnClickListener { startStage(3) }
     }
 
     private fun startStage(grade: Int) {
