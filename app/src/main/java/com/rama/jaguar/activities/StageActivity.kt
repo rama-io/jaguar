@@ -108,6 +108,7 @@ class StageActivity : CsActivity() {
         // Dot tints are computed live from the theme on each render, but refresh in case the
         // player changed the theme in Settings and came back mid-session.
         brailleBlock.refreshTheme()
+        typedSlots.forEach { it.refreshTheme() }
     }
 
     override fun onDestroy() {
@@ -121,7 +122,8 @@ class StageActivity : CsActivity() {
 
     private fun buildWordList(grade: Int): List<BrailleWord> {
         val pool = BrailleWordBank.wordsForGrade(grade)
-        return (1..ROUND_COUNT).map { pool.random() }
+        val count = ROUND_COUNT.coerceAtMost(pool.size)
+        return pool.shuffled().take(count)
     }
 
     private fun loadWord(index: Int) {

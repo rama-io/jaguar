@@ -46,6 +46,10 @@ class ScoreActivity : CsActivity() {
         val nameInput = findViewById<EditText>(R.id.name)
         nameInput.setText("")
 
+        findViewById<View>(R.id.close_btn).setOnClickListener {
+            goToLeaderboard()
+        }
+
         findViewById<Button>(R.id.submit).setOnClickListener {
             val name = nameInput.text?.toString()?.trim().orEmpty()
             if (name.isEmpty()) {
@@ -63,12 +67,16 @@ class ScoreActivity : CsActivity() {
                 )
             )
 
-            val intent = Intent(this, LeaderboardActivity::class.java).apply {
-                flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
-            }
-            startActivity(intent)
-            finish()
+            goToLeaderboard()
         }
+    }
+
+    private fun goToLeaderboard() {
+        val intent = Intent(this, LeaderboardActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+        }
+        startActivity(intent)
+        finish()
     }
 
     override fun onResume() {
