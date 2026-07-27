@@ -59,14 +59,14 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:text="1"
-            style="@style/BTN2" />
+            style="@style/BTN1" />
 
         <Button
             android:id="@+id/lvl2"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:text="2"
-            style="@style/BTN2" />
+            style="@style/BTN1" />
     </LinearLayout>
 
 </LinearLayout>
