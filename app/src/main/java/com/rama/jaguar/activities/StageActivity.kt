@@ -5,11 +5,9 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
-import android.view.WindowManager
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
-import com.rama.bohio.objects.PrefKeys
 import com.rama.bohio.util.UiActions
 import com.rama.jaguar.BrailleBlock
 import com.rama.jaguar.BrailleData
@@ -49,6 +47,9 @@ class StageActivity : CsActivity() {
     private lateinit var progressText: TextView
     private lateinit var typedRow: LinearLayout
     private var typedSlots: List<SmallBrailleBlock> = emptyList()
+    private lateinit var correctRow: LinearLayout
+    private var correctSlots: List<SmallBrailleBlock> = emptyList()
+    private var revealArmed = false
     private lateinit var prevBtn: View
     private lateinit var nextBtn: View
 
@@ -75,6 +76,7 @@ class StageActivity : CsActivity() {
         timeText = findViewById(R.id.time_text)
         progressText = findViewById(R.id.progress_text)
         typedRow = findViewById(R.id.typed_row)
+        correctRow = findViewById(R.id.correct_row)
         prevBtn = findViewById(R.id.prev_btn)
         nextBtn = findViewById(R.id.next_btn)
 
@@ -93,6 +95,7 @@ class StageActivity : CsActivity() {
         applyKeepScreenOnPref(prefs)
         brailleBlock.refreshTheme()
         typedSlots.forEach { it.refreshTheme() }
+        correctSlots.forEach { it.refreshTheme() }
     }
 
     override fun onDestroy() {
@@ -114,6 +117,7 @@ class StageActivity : CsActivity() {
         wordIndex = index
         cellIndex = 0
         awaitingAdvance = false
+        revealArmed = false
         val word = words[index]
         correctCells = BooleanArray(word.cells.size)
 
@@ -125,6 +129,14 @@ class StageActivity : CsActivity() {
         typedSlots = word.cells.map {
             val slot = SmallBrailleBlock(this)
             typedRow.addView(slot)
+            slot
+        }
+
+        correctRow.removeAllViews()
+        correctSlots = word.cells.map {
+            val slot = SmallBrailleBlock(this)
+            slot.visibility = View.GONE
+            correctRow.addView(slot)
             slot
         }
 
@@ -152,6 +164,19 @@ class StageActivity : CsActivity() {
         slot.setEntry(entered, label)
         slot.setState(if (correct) SmallBrailleBlock.State.CORRECT else SmallBrailleBlock.State.INCORRECT)
 
+        val revealSlot = correctSlots[cellIndex]
+        if (correct) {
+            revealSlot.visibility = if (revealArmed) View.INVISIBLE else View.GONE
+        } else {
+            if (!revealArmed) {
+                revealArmed = true
+                correctSlots.forEach { it.visibility = View.INVISIBLE }
+            }
+            revealSlot.setEntry(expected.dots, expected.display)
+            revealSlot.setState(SmallBrailleBlock.State.CORRECT)
+            revealSlot.visibility = View.VISIBLE
+        }
+
         cellIndex++
         brailleBlock.reset()
         updateNavButtons()
@@ -170,6 +195,11 @@ class StageActivity : CsActivity() {
         val slot = typedSlots[cellIndex]
         slot.setEntry(emptySet(), "")
         slot.setState(SmallBrailleBlock.State.NEUTRAL)
+
+        val revealSlot = correctSlots[cellIndex]
+        revealSlot.setEntry(emptySet(), "")
+        revealSlot.visibility = if (revealArmed) View.INVISIBLE else View.GONE
+
         brailleBlock.reset()
         updateNavButtons()
     }

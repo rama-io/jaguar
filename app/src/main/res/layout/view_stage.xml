@@ -35,6 +35,7 @@
 
         <TextView
             android:id="@+id/time_text"
+            android:visibility="gone"
             android:layout_width="wrap_content"
             style="@style/Text" />
     </LinearLayout>
@@ -47,8 +48,7 @@
         <TextView
             android:id="@+id/prompt_text"
             style="@style/H2_center"
-            android:textColor="@color/accent_3"
-            android:layout_marginBottom="@dimen/space_between_elements" />
+            android:textColor="@color/accent_3" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -84,19 +84,28 @@
             </FrameLayout>
         </LinearLayout>
 
-        <View style="@style/Separator" />
-
         <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scrollbars="none">
 
             <LinearLayout
-                android:id="@+id/typed_row"
                 android:layout_gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/HorizontalListDivided" />
+                style="@style/VerticalListDivided">
+
+                <LinearLayout
+                    android:id="@+id/typed_row"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    style="@style/HorizontalListDivided" />
+
+                <LinearLayout
+                    android:id="@+id/correct_row"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    style="@style/HorizontalListDivided" />
+            </LinearLayout>
+
         </HorizontalScrollView>
     </LinearLayout>
 

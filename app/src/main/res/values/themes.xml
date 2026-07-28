@@ -8,15 +8,15 @@
         <item name="contentDescription">Braille Dot</item>
         <item name="android:tint">@color/bg_3</item>
         <item name="android:src">@drawable/px_disc</item>
-        <item name="android:layout_width">65sp</item>
-        <item name="android:layout_height">65sp</item>
+        <item name="android:layout_width">50sp</item>
+        <item name="android:layout_height">50sp</item>
         <item name="android:layout_gravity">center</item>
     </style>
 
     <style name="BrailleImgFrame">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:padding">6sp</item>
+        <item name="android:padding">4sp</item>
         <item name="android:background">@android:color/transparent</item>
     </style>
 
