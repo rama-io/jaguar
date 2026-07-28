@@ -1,17 +1,7 @@
 package com.rama.jaguar
 
-/** A target word for a Stage round: its printed text, and the ordered braille cells that spell it. */
 data class BrailleWord(val text: String, val cells: List<BrailleSign>)
 
-/**
- * Curated target-word lists. Grade 1 words are spelled letter-by-letter. Grade 2 words either
- * ARE one of the whole-word contractions (typed as a single cell) or embed a groupsign inside an
- * otherwise letter-by-letter spelling (e.g. "night" = n, i, gh, t).
- *
- * Note: these breakdowns are chosen for teaching value, not lifted from a full UEB rule engine —
- * real contracted braille has positional rules (e.g. exactly when "st" or "ing" may be used)
- * that this simplified word list doesn't attempt to fully model.
- */
 object BrailleWordBank {
 
     private fun cell(id: String): BrailleSign =
@@ -75,14 +65,9 @@ object BrailleWordBank {
         word("sing", "s", "ing"),
     )
 
-    // Grade 3 isn't standardized (see BrailleData), so it reuses grade 1+2 words for now
-    // rather than inventing content and presenting it as a real standard.
-    val WORDS_GRADE_3: List<BrailleWord> = emptyList()
-
     fun wordsForGrade(grade: Int): List<BrailleWord> = when (grade) {
         1 -> WORDS_GRADE_1
         2 -> WORDS_GRADE_1 + WORDS_GRADE_2
-        3 -> WORDS_GRADE_1 + WORDS_GRADE_2 + WORDS_GRADE_3
         else -> WORDS_GRADE_1
     }
 }
