@@ -22,7 +22,7 @@ class StageActivity : CsActivity() {
     companion object {
         const val EXTRA_GRADE = "extra_grade"
         private const val ROUND_COUNT = 15
-        private const val ADVANCE_DELAY_MS = 500L
+        private const val ADVANCE_DELAY_MS = 1000L
     }
 
     private lateinit var words: List<BrailleWord>
@@ -198,7 +198,15 @@ class StageActivity : CsActivity() {
 
         val revealSlot = correctSlots[cellIndex]
         revealSlot.setEntry(emptySet(), "")
-        revealSlot.visibility = if (revealArmed) View.INVISIBLE else View.GONE
+        revealSlot.visibility = View.GONE
+
+        val stillHasRevealedMistake = correctSlots.any { it.visibility == View.VISIBLE }
+        if (!stillHasRevealedMistake) {
+            revealArmed = false
+            correctSlots.forEach { it.visibility = View.GONE }
+        } else {
+            revealSlot.visibility = View.INVISIBLE
+        }
 
         brailleBlock.reset()
         updateNavButtons()
