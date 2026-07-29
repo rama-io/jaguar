@@ -15,8 +15,8 @@ class StageSelectorActivity : CsActivity() {
         applyEdgeToEdgePadding(root)
         applyCurrentTheme(root)
 
-        findViewById<View>(R.id.lvl1_en).setOnClickListener { startStage(1) }
-        findViewById<View>(R.id.lvl2_en).setOnClickListener { startStage(2) }
+        findViewById<View>(R.id.lvl1_eng).setOnClickListener { startStage(1) }
+        findViewById<View>(R.id.lvl2_eng).setOnClickListener { startStage(2) }
     }
 
     private fun startStage(grade: Int) {

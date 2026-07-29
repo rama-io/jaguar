@@ -6,42 +6,72 @@
     android:layout_height="match_parent"
     style="@style/VerticalListDivided">
 
-    <TextView
-        style="@style/H2"
-        android:textColor="@color/h1"
-        android:layout_marginBottom="@dimen/space_between_elements"
-        android:text="@string/h1_choose_stage" />
+    <LinearLayout style="@style/HorizontalListDivided">
 
-    <GridLayout
-        android:id="@+id/small_braille_grid"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:columnCount="2"
-        android:useDefaultMargins="true">
-
-        <Button
-            android:id="@+id/lvl1_en"
+        <FrameLayout
+            android:id="@+id/close_btn"
             android:layout_width="wrap_content"
-            android:text="EN_1"
-            style="@style/BTN1" />
+            android:layout_height="wrap_content"
+            android:background="@color/bg_1"
+            android:paddingTop="12sp"
+            android:paddingBottom="12sp">
 
-        <Button
-            android:id="@+id/lvl2_en"
-            android:layout_width="wrap_content"
-            android:text="EN_2"
-            style="@style/BTN1" />
+            <ImageView
+                android:src="@drawable/px_times"
+                app:tint="@color/foreground"
+                android:contentDescription="@string/altdescr_close"
+                style="@style/Icon24" />
+        </FrameLayout>
+    </LinearLayout>
 
-        <Button
-            android:id="@+id/lvl1_es"
-            android:layout_width="wrap_content"
-            android:text="ES_1"
-            style="@style/BTN1" />
+    <LinearLayout style="@style/VerticalListDivided">
 
-        <Button
-            android:id="@+id/lvl2_es"
-            android:layout_width="wrap_content"
-            android:text="ES_2"
-            style="@style/BTN1" />
-    </GridLayout>
+        <TextView
+            android:text="English"
+            style="@style/H3" />
 
+        <LinearLayout style="@style/HorizontalListDivided">
+
+            <Button
+                android:id="@+id/lvl1_eng"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:text="Grade 1"
+                style="@style/BTN2" />
+
+            <Button
+                android:id="@+id/lvl2_eng"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:text="Grade 2"
+                style="@style/BTN2" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View style="@style/Separator" />
+
+    <LinearLayout style="@style/VerticalListDivided">
+
+        <TextView
+            android:text="Spanish"
+            android:layout_weight="1"
+            style="@style/H3" />
+
+        <LinearLayout style="@style/HorizontalListDivided">
+
+            <Button
+                android:id="@+id/lvl1_esp"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:text="Grade 1"
+                style="@style/BTN2" />
+
+            <Button
+                android:id="@+id/lvl2_esp"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:text="Grade 2"
+                style="@style/BTN2" />
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>
