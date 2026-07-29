@@ -1,11 +1,5 @@
 package com.rama.jaguar.braille
 
-/**
- * Shared plumbing for a language's braille pack: builds the id/dot lookup maps from the
- * per-grade sign and word lists a subclass provides, and implements the cumulative
- * grade pooling that's the same for every language (grade 2 practice folds in grade 1
- * content, and so on).
- */
 abstract class BaseBraillePack(
     final override val language: BrailleLanguage,
     final override val maxGrade: Int
