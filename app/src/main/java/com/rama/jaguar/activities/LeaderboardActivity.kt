@@ -28,14 +28,14 @@ class LeaderboardActivity : CsActivity() {
             startActivity(Intent(this, SettingsActivity::class.java))
         }
 
-        findViewById<View>(R.id.lvl1).setOnClickListener { startStage(1) }
-        findViewById<View>(R.id.lvl2).setOnClickListener { startStage(2) }
-    }
-
-    private fun startStage(grade: Int) {
-        val intent = Intent(this, StageActivity::class.java)
-        intent.putExtra(StageActivity.EXTRA_GRADE, grade)
-        startActivity(intent)
+        findViewById<View>(R.id.lvl_selector).setOnClickListener {
+            startActivity(
+                Intent(
+                    this,
+                    StageSelectorActivity::class.java
+                )
+            )
+        }
     }
 
     override fun onResume() {

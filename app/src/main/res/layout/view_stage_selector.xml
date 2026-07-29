@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root"
+    android:background="@color/bg_1"
+    android:layout_height="match_parent"
+    style="@style/VerticalListDivided">
+
+    <TextView
+        style="@style/H2"
+        android:textColor="@color/h1"
+        android:layout_marginBottom="@dimen/space_between_elements"
+        android:text="@string/h1_choose_stage" />
+
+    <GridLayout
+        android:id="@+id/small_braille_grid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="2"
+        android:useDefaultMargins="true">
+
+        <Button
+            android:id="@+id/lvl1_en"
+            android:layout_width="wrap_content"
+            android:text="EN_1"
+            style="@style/BTN1" />
+
+        <Button
+            android:id="@+id/lvl2_en"
+            android:layout_width="wrap_content"
+            android:text="EN_2"
+            style="@style/BTN1" />
+
+        <Button
+            android:id="@+id/lvl1_es"
+            android:layout_width="wrap_content"
+            android:text="ES_1"
+            style="@style/BTN1" />
+
+        <Button
+            android:id="@+id/lvl2_es"
+            android:layout_width="wrap_content"
+            android:text="ES_2"
+            style="@style/BTN1" />
+    </GridLayout>
+
+</LinearLayout>

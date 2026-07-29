@@ -80,7 +80,7 @@
     <string name="altdescr_prev_question">Erase last letter</string>
     <string name="altdescr_skip_question">Submit letter</string>
     <string name="toast_tap_some_dots">Tap some dots first</string>
-    <string name="label_choose_level">Choose a level to practice:</string>
+    <string name="label_choose_level">Choose a level to practice</string>
 
     <!-- APP -->
     <string name="app_name" translatable="false">@string/product_jaguar</string>
@@ -89,5 +89,7 @@
     <string name="activity_score">Score</string>
     <string name="h1_leaderboard">Leaderboard</string>
     <string name="label_submit">Submit</string>
+    <string name="h1_choose_stage">Choose Stage</string>
+    <string name="activity_stage_selector">Stage Selector</string>
 </resources>
 

@@ -47,27 +47,10 @@
             style="@style/VerticalListDivided" />
     </ScrollView>
 
-    <TextView
+    <Button
+        android:id="@+id/lvl_selector"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:text="@string/label_choose_level"
-        style="@style/H3" />
-
-    <LinearLayout style="@style/HorizontalListDivided">
-
-        <Button
-            android:id="@+id/lvl1"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:text="1"
-            style="@style/BTN1" />
-
-        <Button
-            android:id="@+id/lvl2"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:text="2"
-            style="@style/BTN1" />
-    </LinearLayout>
+        style="@style/BTN1" />
 
 </LinearLayout>

@@ -15,6 +15,11 @@
 
         <activity
             android:exported="false"
+            android:name=".activities.StageSelectorActivity"
+            android:label="@string/activity_stage_selector" />
+
+        <activity
+            android:exported="false"
             android:name=".activities.StageActivity"
             android:label="@string/activity_stage" />
 
