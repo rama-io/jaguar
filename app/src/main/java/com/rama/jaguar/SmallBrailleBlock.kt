@@ -9,6 +9,8 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.rama.bohio.managers.ThemeManager
+import com.rama.jaguar.braille.BrailleCatalog
+import com.rama.jaguar.braille.BrailleLanguage
 import com.rama.bohio.managers.PrefsManager as BohioPrefsManager
 
 class SmallBrailleBlock @JvmOverloads constructor(
@@ -45,8 +47,8 @@ class SmallBrailleBlock @JvmOverloads constructor(
         }
     }
 
-    fun setValue(text: String) {
-        val sign = BrailleData.find(text)
+    fun setValue(text: String, language: BrailleLanguage = BrailleLanguage.DEFAULT) {
+        val sign = BrailleCatalog.packFor(language).find(text)
         setEntry(sign?.dots ?: emptySet(), sign?.display ?: text)
     }
 

@@ -10,18 +10,25 @@ import android.widget.TextView
 import android.widget.Toast
 import com.rama.bohio.util.UiActions
 import com.rama.jaguar.BrailleBlock
-import com.rama.jaguar.BrailleData
-import com.rama.jaguar.BrailleWord
-import com.rama.jaguar.BrailleWordBank
 import com.rama.jaguar.CsActivity
 import com.rama.jaguar.R
 import com.rama.jaguar.SmallBrailleBlock
+import com.rama.jaguar.braille.BrailleCatalog
+import com.rama.jaguar.braille.BrailleLanguage
+import com.rama.jaguar.braille.BrailleLanguagePack
+import com.rama.jaguar.braille.BrailleWord
 
 class StageActivity : CsActivity() {
 
     companion object {
+        const val EXTRA_LANGUAGE = "extra_language"
         const val EXTRA_GRADE = "extra_grade"
-        private const val ROUND_COUNT = 15
+
+        // Grade 1 always uses every word in the pool (one per character), so a full
+        // stage exercises the whole alphabet - languages with more characters (e.g.
+        // Spanish) naturally get more attempts. Later grades are capped so a big
+        // combined word pool doesn't turn into a marathon round.
+        private const val ROUND_COUNT_CAP = 15
         private const val ADVANCE_DELAY_MS = 1000L
     }
 
@@ -33,6 +40,8 @@ class StageActivity : CsActivity() {
     private var wordsCompleted = 0
     private var awaitingAdvance = false
 
+    private var language = BrailleLanguage.DEFAULT
+    private lateinit var pack: BrailleLanguagePack
     private var grade = 1
     private var startTimeMillis = 0L
     private var elapsedMillis = 0L
@@ -70,7 +79,9 @@ class StageActivity : CsActivity() {
         applyEdgeToEdgePadding(root)
         applyCurrentTheme(root)
 
-        grade = intent.getIntExtra(EXTRA_GRADE, 1).coerceIn(1, 2)
+        language = BrailleLanguage.fromCode(intent.getStringExtra(EXTRA_LANGUAGE))
+        pack = BrailleCatalog.packFor(language)
+        grade = intent.getIntExtra(EXTRA_GRADE, 1).coerceIn(1, pack.maxGrade)
         brailleBlock = findViewById(R.id.braille_display)
         promptText = findViewById(R.id.prompt_text)
         timeText = findViewById(R.id.time_text)
@@ -108,8 +119,8 @@ class StageActivity : CsActivity() {
     // Setup
 
     private fun buildWordList(grade: Int): List<BrailleWord> {
-        val pool = BrailleWordBank.wordsForGrade(grade)
-        val count = ROUND_COUNT.coerceAtMost(pool.size)
+        val pool = pack.wordsForGrade(grade)
+        val count = if (grade == 1) pool.size else ROUND_COUNT_CAP.coerceAtMost(pool.size)
         return pool.shuffled().take(count)
     }
 
@@ -158,7 +169,7 @@ class StageActivity : CsActivity() {
         val correct = entered == expected.dots
         correctCells[cellIndex] = correct
 
-        val enteredSign = BrailleData.findByDots(entered)
+        val enteredSign = pack.findByDots(entered)
         val label = enteredSign?.display ?: "?"
         val slot = typedSlots[cellIndex]
         slot.setEntry(entered, label)
@@ -244,6 +255,7 @@ class StageActivity : CsActivity() {
     private fun finishStage() {
         timerRunning = false
         val intent = Intent(this, ScoreActivity::class.java).apply {
+            putExtra(ScoreActivity.EXTRA_LANGUAGE, language.code)
             putExtra(ScoreActivity.EXTRA_GRADE, grade)
             putExtra(ScoreActivity.EXTRA_SCORE, wordsCorrect)
             putExtra(ScoreActivity.EXTRA_TOTAL, wordsCompleted)

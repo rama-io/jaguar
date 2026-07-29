@@ -1,22 +1,8 @@
-package com.rama.jaguar
+package com.rama.jaguar.braille.en
 
-/**
- * A single braille sign: a letter (grade 1) or a contraction / word-sign (grade 2+).
- *
- * [dots] uses standard braille dot numbering:
- *   1 4
- *   2 5
- *   3 6
- * (1,2,3 down the left column top-to-bottom; 4,5,6 down the right column top-to-bottom.)
- */
-data class BrailleSign(
-    val id: String,
-    val display: String,
-    val dots: Set<Int>,
-    val grade: Int
-)
+import com.rama.jaguar.braille.BrailleSign
 
-object BrailleData {
+object EnglishBrailleData {
 
     /**
      * Grade 1 (uncontracted): the plain English alphabet, one cell per letter.
@@ -110,33 +96,8 @@ object BrailleData {
         sign("in", 3, 5),
     )
 
-    private val byId: Map<String, BrailleSign> by lazy {
-        (GRADE_1 + GRADE_2).associateBy { it.id }
-    }
-
-    // Some grade-2 wordsigns deliberately reuse a grade-1 letter's pattern (that's how
-    // alphabetic wordsigns work in real braille - context decides the meaning). For showing
-    // "what letter does this pattern read as" we prefer the plain letter when ambiguous.
-    private val byDots: Map<Set<Int>, BrailleSign> by lazy {
-        val map = LinkedHashMap<Set<Int>, BrailleSign>()
-        (GRADE_1 + GRADE_2).forEach { sign ->
-            if (!map.containsKey(sign.dots)) map[sign.dots] = sign
-        }
-        map
-    }
-
-    fun find(id: String): BrailleSign? = byId[id.lowercase()]
-
-    /** Resolves a tapped-out dot pattern back to the sign it represents, if any. */
-    fun findByDots(dots: Set<Int>): BrailleSign? = byDots[dots]
-
-    /** Cumulative pool for a given grade: grade 2 practice includes the grade 1 alphabet too. */
-    fun signsForGrade(grade: Int): List<BrailleSign> = when (grade) {
-        1 -> GRADE_1
-        2 -> GRADE_1 + GRADE_2
-        else -> GRADE_1
-    }
+    fun find(id: String): BrailleSign? = (GRADE_1 + GRADE_2).find { it.id == id.lowercase() }
 
     private fun sign(id: String, vararg dots: Int) =
-        BrailleSign(id = id, display = id, dots = dots.toSet(), grade = 1)
+        BrailleSign(id = id, display = id, dots = dots.toSet())
 }

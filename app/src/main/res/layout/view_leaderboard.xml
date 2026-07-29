@@ -35,17 +35,35 @@
         android:layout_marginBottom="@dimen/space_between_elements"
         android:text="@string/h1_leaderboard" />
 
-    <ScrollView
+    <FrameLayout
         android:layout_width="match_parent"
+        android:background="@color/bg_2"
+        android:padding="@dimen/small"
         android:layout_height="0dp"
         android:layout_weight="1">
 
-        <LinearLayout
-            android:id="@+id/leaderboard_list"
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/leaderboard_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/VerticalListDivided" />
+        </ScrollView>
+
+        <TextView
+            android:id="@+id/empty_state"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/VerticalListDivided" />
-    </ScrollView>
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:visibility="gone"
+            android:textColor="@color/disabled"
+            style="@style/H3"
+            android:text="@string/h2_no_leaderboard_entries" />
+    </FrameLayout>
 
     <Button
         android:id="@+id/lvl_selector"

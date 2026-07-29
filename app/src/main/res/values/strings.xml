@@ -81,6 +81,7 @@
     <string name="altdescr_skip_question">Submit letter</string>
     <string name="toast_tap_some_dots">Tap some dots first</string>
     <string name="label_choose_level">Choose a level to practice</string>
+    <string name="h2_no_leaderboard_entries">[ No scores yet ]</string>
 
     <!-- APP -->
     <string name="app_name" translatable="false">@string/product_jaguar</string>

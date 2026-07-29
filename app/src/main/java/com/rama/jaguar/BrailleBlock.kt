@@ -9,6 +9,8 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import com.rama.bohio.managers.ThemeManager
 import com.rama.bohio.util.UiActions
+import com.rama.jaguar.braille.BrailleCatalog
+import com.rama.jaguar.braille.BrailleLanguage
 import com.rama.bohio.managers.PrefsManager as BohioPrefsManager
 
 /**
@@ -75,9 +77,9 @@ class BrailleBlock @JvmOverloads constructor(
         render()
     }
 
-    /** Looks [text] up in [BrailleData] and displays its pattern. */
-    fun setValue(text: String) {
-        setPattern(BrailleData.find(text)?.dots ?: emptySet())
+    /** Looks [text] up in [language]'s braille pack and displays its pattern. */
+    fun setValue(text: String, language: BrailleLanguage = BrailleLanguage.DEFAULT) {
+        setPattern(BrailleCatalog.packFor(language).find(text)?.dots ?: emptySet())
     }
 
     /** Clears all dots back to the empty cell. */

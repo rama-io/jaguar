@@ -65,13 +65,6 @@
                 android:layout_weight="1"
                 android:text="Grade 1"
                 style="@style/BTN2" />
-
-            <Button
-                android:id="@+id/lvl2_esp"
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:text="Grade 2"
-                style="@style/BTN2" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

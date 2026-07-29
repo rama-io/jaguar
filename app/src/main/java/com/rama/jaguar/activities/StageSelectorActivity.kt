@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import com.rama.jaguar.CsActivity
 import com.rama.jaguar.R
+import com.rama.jaguar.braille.BrailleLanguage
 
 class StageSelectorActivity : CsActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,12 +16,29 @@ class StageSelectorActivity : CsActivity() {
         applyEdgeToEdgePadding(root)
         applyCurrentTheme(root)
 
-        findViewById<View>(R.id.lvl1_eng).setOnClickListener { startStage(1) }
-        findViewById<View>(R.id.lvl2_eng).setOnClickListener { startStage(2) }
+        findViewById<View>(R.id.lvl1_eng).setOnClickListener {
+            startStage(
+                BrailleLanguage.ENGLISH,
+                1
+            )
+        }
+        findViewById<View>(R.id.lvl2_eng).setOnClickListener {
+            startStage(
+                BrailleLanguage.ENGLISH,
+                2
+            )
+        }
+        findViewById<View>(R.id.lvl1_esp).setOnClickListener {
+            startStage(
+                BrailleLanguage.SPANISH,
+                1
+            )
+        }
     }
 
-    private fun startStage(grade: Int) {
+    private fun startStage(language: BrailleLanguage, grade: Int) {
         val intent = Intent(this, StageActivity::class.java)
+        intent.putExtra(StageActivity.EXTRA_LANGUAGE, language.code)
         intent.putExtra(StageActivity.EXTRA_GRADE, grade)
         startActivity(intent)
     }

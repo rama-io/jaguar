@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.LinearLayout
+import android.widget.TextView
 import com.rama.jaguar.CsActivity
 import com.rama.jaguar.ListItem
 import com.rama.jaguar.R
@@ -12,6 +13,7 @@ import com.rama.jaguar.R
 class LeaderboardActivity : CsActivity() {
 
     private lateinit var listContainer: LinearLayout
+    private lateinit var emptyState: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,6 +24,7 @@ class LeaderboardActivity : CsActivity() {
         applyCurrentTheme(root)
 
         listContainer = findViewById(R.id.leaderboard_list)
+        emptyState = findViewById(R.id.empty_state)
 
         val openSettingsBtn = findViewById<FrameLayout>(R.id.open_settings)
         openSettingsBtn.setOnClickListener {
@@ -47,7 +50,11 @@ class LeaderboardActivity : CsActivity() {
     private fun refreshLeaderboard() {
         listContainer.removeAllViews()
         val entries = prefs.getLeaderboard()
-        if (entries.isEmpty()) return
+        if (entries.isEmpty()) {
+            emptyState.visibility = View.VISIBLE
+            return
+        }
+        emptyState.visibility = View.GONE
         entries.forEachIndexed { index, entry ->
             val row = ListItem(this)
             row.bind(index + 1, entry)

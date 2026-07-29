@@ -3,25 +3,26 @@ package com.rama.jaguar.activities
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.view.WindowManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import com.rama.bohio.objects.PrefKeys
 import com.rama.jaguar.CsActivity
 import com.rama.jaguar.LeaderboardEntry
 import com.rama.jaguar.R
+import com.rama.jaguar.braille.BrailleLanguage
 
 class ScoreActivity : CsActivity() {
 
     companion object {
+        const val EXTRA_LANGUAGE = "extra_language"
         const val EXTRA_GRADE = "extra_grade"
         const val EXTRA_SCORE = "extra_score"
         const val EXTRA_TOTAL = "extra_total"
         const val EXTRA_TIME_MILLIS = "extra_time_millis"
     }
 
+    private var language = BrailleLanguage.DEFAULT
     private var grade = 1
     private var score = 0
     private var total = 0
@@ -35,6 +36,7 @@ class ScoreActivity : CsActivity() {
         applyEdgeToEdgePadding(root)
         applyCurrentTheme(root)
 
+        language = BrailleLanguage.fromCode(intent.getStringExtra(EXTRA_LANGUAGE))
         grade = intent.getIntExtra(EXTRA_GRADE, 1)
         score = intent.getIntExtra(EXTRA_SCORE, 0)
         total = intent.getIntExtra(EXTRA_TOTAL, 0)
@@ -46,11 +48,20 @@ class ScoreActivity : CsActivity() {
         val nameInput = findViewById<EditText>(R.id.name)
         nameInput.setText("")
 
+        val submitBtn = findViewById<Button>(R.id.submit)
+
+        if (score == 0) {
+            // Nothing worth putting on the leaderboard - skip the submission view
+            // entirely rather than let someone submit a 0 score.
+            nameInput.visibility = View.GONE
+            submitBtn.visibility = View.GONE
+        }
+
         findViewById<View>(R.id.close_btn).setOnClickListener {
             goToLeaderboard()
         }
 
-        findViewById<Button>(R.id.submit).setOnClickListener {
+        submitBtn.setOnClickListener {
             val name = nameInput.text?.toString()?.trim().orEmpty()
             if (name.isEmpty()) {
                 Toast.makeText(this, getString(R.string.toast_name_empty), Toast.LENGTH_SHORT)
@@ -61,6 +72,7 @@ class ScoreActivity : CsActivity() {
             prefs.addLeaderboardEntry(
                 LeaderboardEntry(
                     name = name,
+                    language = language.code,
                     grade = grade,
                     score = score,
                     total = total,

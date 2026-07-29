@@ -32,7 +32,7 @@ class ListItem @JvmOverloads constructor(
     fun bind(rank: Int, entry: LeaderboardEntry) {
         findViewById<TextView>(R.id.counter).text = "$rank."
         findViewById<TextView>(R.id.name).text = entry.name
-        findViewById<TextView>(R.id.lvl).text = "lv${entry.grade}"
+        findViewById<TextView>(R.id.lvl).text = "${entry.language}${entry.grade}"
         findViewById<TextView>(R.id.matches).text = "${entry.score}/${entry.total}"
         findViewById<TextView>(R.id.time).text = formatTime(entry.timeMillis)
     }

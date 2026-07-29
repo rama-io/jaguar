@@ -5,6 +5,7 @@ import org.json.JSONObject
 
 data class LeaderboardEntry(
     val name: String,
+    val language: String = "en",
     val grade: Int,
     val score: Int,
     val total: Int,
@@ -13,6 +14,7 @@ data class LeaderboardEntry(
 ) {
     fun toJson(): JSONObject = JSONObject().apply {
         put("name", name)
+        put("language", language)
         put("grade", grade)
         put("score", score)
         put("total", total)
@@ -23,6 +25,9 @@ data class LeaderboardEntry(
     companion object {
         fun fromJson(json: JSONObject): LeaderboardEntry = LeaderboardEntry(
             name = json.optString("name", "?"),
+            // Entries saved before multi-language support was added have no "language"
+            // key; they were all English, so default to that rather than dropping them.
+            language = json.optString("language", "en"),
             grade = json.optInt("grade", 1),
             score = json.optInt("score", 0),
             total = json.optInt("total", 0),
