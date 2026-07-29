@@ -15,7 +15,7 @@ android {
         applicationId = "com.rama.jaguar"
         minSdk = 21
         targetSdk = 37
-        versionCode = 14
+        versionCode = 1
         versionName = "$currentYear.$versionCode"
     }
 
