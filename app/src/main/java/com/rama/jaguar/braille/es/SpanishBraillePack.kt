@@ -12,7 +12,7 @@ object SpanishBraillePack : BaseBraillePack(language = BrailleLanguage.SPANISH, 
         else -> emptyList()
     }
 
-    override fun wordsIntroducedAtGrade(grade: Int): List<BrailleWord> = when (grade) {
+    override fun wordPoolsIntroducedAtGrade(grade: Int): List<List<BrailleWord>> = when (grade) {
         1 -> SpanishWordBank.WORDS_GRADE_1
         else -> emptyList()
     }

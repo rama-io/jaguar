@@ -4,16 +4,6 @@ import com.rama.jaguar.braille.BrailleSign
 
 object SpanishBrailleData {
 
-    /**
-     * Grade 1 (uncontracted): the Spanish alphabet. a-z use the same dot patterns as
-     * English/UEB, since uncontracted Latin-script braille codes are essentially
-     * identical for the plain a-z letters they share. Spanish adds seven signs no
-     * English word needs: ñ, and the six accented vowels (á, é, í, ó, ú, ü).
-     *
-     * Unlike English, Spanish braille has no separate literary "grade 2": every
-     * letter is always spelled out individually (see SpanishBraillePack for how
-     * "grade 2" is used here instead).
-     */
     val GRADE_1: List<BrailleSign> = listOf(
         sign("a", 1),
         sign("b", 1, 2),
@@ -48,9 +38,36 @@ object SpanishBrailleData {
         sign("ó", 3, 4, 6),
         sign("ú", 2, 3, 4, 5, 6),
         sign("ü", 1, 2, 5, 6),
+
+        // Number sign: prefixes a-j's patterns to read them as 1-9, 0 instead of
+        // letters, same convention as English/UEB. The digit cells below reuse a-j's
+        // patterns on purpose (see byDots in BaseBraillePack for how that ambiguity
+        // is resolved for display).
+        sign("#", 3, 4, 5, 6),
+        sign("1", 1),
+        sign("2", 1, 2),
+        sign("3", 1, 4),
+        sign("4", 1, 4, 5),
+        sign("5", 1, 5),
+        sign("6", 1, 2, 4),
+        sign("7", 1, 2, 4, 5),
+        sign("8", 1, 2, 5),
+        sign("9", 2, 4),
+        sign("0", 2, 4, 5),
+
+        // Common punctuation (same marks/dots as English/UEB; Spanish's own inverted
+        // ¿ ¡ are left out of this simplified set).
+        sign(",", 2),
+        sign(";", 2, 3),
+        sign(":", 2, 5),
+        sign(".", 2, 5, 6),
+        sign("?", 2, 3, 6),
+        sign("!", 2, 3, 5),
+        sign("'", 3),
+        sign("-", 3, 6),
     )
 
-    fun find(id: String): BrailleSign? = GRADE_1.find { it.id == id.lowercase() }
+    fun find(id: String): BrailleSign? = (GRADE_1).find { it.id == id.lowercase() }
 
     private fun sign(id: String, vararg dots: Int) =
         BrailleSign(id = id, display = id, dots = dots.toSet())

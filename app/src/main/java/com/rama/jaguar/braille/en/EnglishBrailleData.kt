@@ -38,6 +38,33 @@ object EnglishBrailleData {
         sign("x", 1, 3, 4, 6),
         sign("y", 1, 3, 4, 5, 6),
         sign("z", 1, 3, 5, 6),
+
+        // Number sign: prefixes a-j's patterns to read them as 1-9, 0 instead of
+        // letters. Modeled as its own cell/id here since each stage cell checks one
+        // dot pattern at a time; the digit cells below reuse a-j's patterns, which is
+        // intentional (that's how real braille numbers work) and mirrors the
+        // ambiguity already documented on byDots above.
+        sign("#", 3, 4, 5, 6),
+        sign("1", 1),
+        sign("2", 1, 2),
+        sign("3", 1, 4),
+        sign("4", 1, 4, 5),
+        sign("5", 1, 5),
+        sign("6", 1, 2, 4),
+        sign("7", 1, 2, 4, 5),
+        sign("8", 1, 2, 5),
+        sign("9", 2, 4),
+        sign("0", 2, 4, 5),
+
+        // Common punctuation.
+        sign(",", 2),
+        sign(";", 2, 3),
+        sign(":", 2, 5),
+        sign(".", 2, 5, 6),
+        sign("?", 2, 3, 6),
+        sign("!", 2, 3, 5),
+        sign("'", 3),
+        sign("-", 3, 6),
     )
 
     /**

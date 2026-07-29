@@ -8,8 +8,13 @@ abstract class BaseBraillePack(
     /** Signs newly introduced at exactly this grade tier (not cumulative). */
     protected abstract fun signsIntroducedAtGrade(grade: Int): List<BrailleSign>
 
-    /** Words newly introduced at exactly this grade tier (not cumulative). */
-    protected abstract fun wordsIntroducedAtGrade(grade: Int): List<BrailleWord>
+    /**
+     * Word *pools* newly introduced at exactly this grade tier (not cumulative).
+     * Each inner list is a set of interchangeable options for the same slot (e.g. every
+     * word that drills the letter "b"), so callers can pick one at random each time a
+     * stage is built instead of always drilling the same word for that slot.
+     */
+    protected abstract fun wordPoolsIntroducedAtGrade(grade: Int): List<List<BrailleWord>>
 
     private val allSigns: List<BrailleSign> by lazy {
         (1..maxGrade).flatMap(::signsIntroducedAtGrade)
@@ -32,8 +37,14 @@ abstract class BaseBraillePack(
     final override fun signsForGrade(grade: Int): List<BrailleSign> =
         (1..grade.coerceIn(1, maxGrade)).flatMap(::signsIntroducedAtGrade)
 
-    final override fun wordsForGrade(grade: Int): List<BrailleWord> =
-        (1..grade.coerceIn(1, maxGrade)).flatMap(::wordsIntroducedAtGrade)
+    // Words are NOT cumulative across grades: practicing grade 2 means practicing
+    // only what's new at grade 2 (e.g. contractions), never a mix with grade 1's
+    // plain alphabet words. Signs (above) stay cumulative since that's the full
+    // character dictionary the pack knows, not a practice list.
+    final override fun wordsForGrade(grade: Int): List<BrailleWord> {
+        val clamped = grade.coerceIn(1, maxGrade)
+        return wordPoolsIntroducedAtGrade(clamped).map { pool -> pool.random() }
+    }
 
     final override fun find(id: String): BrailleSign? = byId[id.lowercase()]
 
