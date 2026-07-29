@@ -1,4 +1,4 @@
-![Preview](./docs/img/jaguar_header_1280x630.svg)
+![Preview](./docs/img/jaguar_header_1200x630.svg)
 ![Badge](https://rama-io.github.io/img/badge_jaguar.svg)
 
 # Jaguar

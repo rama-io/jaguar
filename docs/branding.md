@@ -6,7 +6,7 @@ This document defines the official visual assets and usage guidelines for Jaguar
 
 ## Header
 
-![Jaguar Header](./img/jaguar_header_1280x630.svg)
+![Jaguar Header](./img/jaguar_header_1200x630.svg)
 
 Standard header image for social previews and repository sharing.
 
