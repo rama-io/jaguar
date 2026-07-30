@@ -16,6 +16,10 @@ class StageSelectorActivity : CsActivity() {
         applyEdgeToEdgePadding(root)
         applyCurrentTheme(root)
 
+        findViewById<View>(R.id.close_btn).setOnClickListener {
+            goToLeaderboard()
+        }
+
         findViewById<View>(R.id.lvl1_eng).setOnClickListener {
             startStage(
                 BrailleLanguage.ENGLISH,
@@ -40,6 +44,14 @@ class StageSelectorActivity : CsActivity() {
                 1
             )
         }
+    }
+
+    private fun goToLeaderboard() {
+        val intent = Intent(this, LeaderboardActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+        }
+        startActivity(intent)
+        finish()
     }
 
     private fun startStage(language: BrailleLanguage, grade: Int) {

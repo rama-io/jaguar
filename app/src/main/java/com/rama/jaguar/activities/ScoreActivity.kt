@@ -51,8 +51,6 @@ class ScoreActivity : CsActivity() {
         val submitBtn = findViewById<Button>(R.id.submit)
 
         if (score == 0) {
-            // Nothing worth putting on the leaderboard - skip the submission view
-            // entirely rather than let someone submit a 0 score.
             nameInput.visibility = View.GONE
             submitBtn.visibility = View.GONE
         }
