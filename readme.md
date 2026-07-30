@@ -3,10 +3,7 @@
 
 # Jaguar
 
-**Jaguar** is a minimal, privacy-first focus session app designed to help you stay present and
-intentional with your time.
-
-Jaguar is an Android app for practicing braille by touch-typing it. Instead of reading braille, you build it: each round shows you a word and you enter its braille cells one at a time on a 6-dot input, cell by cell, until the whole word is spelled out correctly.
+**Jaguar** is an Android app for practicing braille by touch-typing it. Instead of reading braille, you build it: each round shows you a word and you enter its braille cells one at a time on a 6-dot input, cell by cell, until the whole word is spelled out correctly.
 
 ---
 

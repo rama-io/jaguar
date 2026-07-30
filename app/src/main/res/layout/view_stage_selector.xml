@@ -27,7 +27,7 @@
     <LinearLayout style="@style/VerticalListDivided">
 
         <TextView
-            android:text="English"
+            android:text="@string/h_english"
             style="@style/H3" />
 
         <LinearLayout style="@style/HorizontalListDivided">
@@ -36,14 +36,14 @@
                 android:id="@+id/lvl1_eng"
                 android:layout_width="wrap_content"
                 android:layout_weight="1"
-                android:text="Grade 1"
+                android:text="@string/btn_grade_1"
                 style="@style/BTN2" />
 
             <Button
                 android:id="@+id/lvl2_eng"
                 android:layout_width="wrap_content"
                 android:layout_weight="1"
-                android:text="Grade 2"
+                android:text="@string/btn_grade_2"
                 style="@style/BTN2" />
         </LinearLayout>
     </LinearLayout>
@@ -53,7 +53,7 @@
     <LinearLayout style="@style/VerticalListDivided">
 
         <TextView
-            android:text="Spanish"
+            android:text="@string/h_spanish"
             style="@style/H3" />
 
         <LinearLayout style="@style/HorizontalListDivided">
@@ -61,7 +61,7 @@
             <Button
                 android:id="@+id/lvl1_esp"
                 android:layout_width="match_parent"
-                android:text="Grade 1"
+                android:text="@string/btn_grade_1"
                 style="@style/BTN2" />
         </LinearLayout>
     </LinearLayout>
@@ -71,7 +71,7 @@
     <LinearLayout style="@style/VerticalListDivided">
 
         <TextView
-            android:text="Portuguese"
+            android:text="@string/h_portuguese"
             style="@style/H3" />
 
         <LinearLayout style="@style/HorizontalListDivided">
@@ -79,7 +79,7 @@
             <Button
                 android:id="@+id/lvl1_por"
                 android:layout_width="match_parent"
-                android:text="Grade 1"
+                android:text="@string/btn_grade_1"
                 style="@style/BTN2" />
         </LinearLayout>
     </LinearLayout>

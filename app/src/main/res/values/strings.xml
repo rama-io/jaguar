@@ -92,5 +92,10 @@
     <string name="label_submit">Submit</string>
     <string name="h1_choose_stage">Choose Stage</string>
     <string name="activity_stage_selector">Stage Selector</string>
+    <string name="btn_grade_1">Grade 1</string>
+    <string name="btn_grade_2">Grade 2</string>
+    <string name="h_portuguese">Portuguese</string>
+    <string name="h_spanish">Spanish</string>
+    <string name="h_english">English</string>
 </resources>
 
