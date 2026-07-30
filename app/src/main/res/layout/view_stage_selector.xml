@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root"
+    android:background="@color/bg_1"
+    android:layout_height="match_parent"
+    style="@style/VerticalListDivided">
+
+    <LinearLayout style="@style/HorizontalListDivided">
+
+        <FrameLayout
+            android:id="@+id/close_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/bg_1"
+            android:paddingTop="12sp"
+            android:paddingBottom="12sp">
+
+            <ImageView
+                android:src="@drawable/px_times"
+                app:tint="@color/foreground"
+                android:contentDescription="@string/altdescr_close"
+                style="@style/Icon24" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <LinearLayout style="@style/VerticalListDivided">
+
+        <TextView
+            android:text="@string/h_english"
+            style="@style/H3" />
+
+        <LinearLayout style="@style/HorizontalListDivided">
+
+            <Button
+                android:id="@+id/lvl1_eng"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/btn_grade_1"
+                style="@style/BTN2" />
+
+            <Button
+                android:id="@+id/lvl2_eng"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/btn_grade_2"
+                style="@style/BTN2" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View style="@style/Separator" />
+
+    <LinearLayout style="@style/VerticalListDivided">
+
+        <TextView
+            android:text="@string/h_spanish"
+            style="@style/H3" />
+
+        <LinearLayout style="@style/HorizontalListDivided">
+
+            <Button
+                android:id="@+id/lvl1_esp"
+                android:layout_width="match_parent"
+                android:text="@string/btn_grade_1"
+                style="@style/BTN2" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View style="@style/Separator" />
+
+    <LinearLayout style="@style/VerticalListDivided">
+
+        <TextView
+            android:text="@string/h_portuguese"
+            style="@style/H3" />
+
+        <LinearLayout style="@style/HorizontalListDivided">
+
+            <Button
+                android:id="@+id/lvl1_por"
+                android:layout_width="match_parent"
+                android:text="@string/btn_grade_1"
+                style="@style/BTN2" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

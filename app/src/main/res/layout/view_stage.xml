@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root"
+    android:background="@color/bg_1"
+    android:layout_height="match_parent"
+    style="@style/VerticalListDivided">
+
+    <LinearLayout style="@style/HorizontalListDivided">
+
+        <FrameLayout
+            android:id="@+id/close_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/bg_1"
+            android:paddingTop="12sp"
+            android:paddingBottom="12sp">
+
+            <ImageView
+                android:src="@drawable/px_times"
+                app:tint="@color/foreground"
+                android:contentDescription="@string/altdescr_close"
+                style="@style/Icon24" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/progress_text"
+            android:layout_width="wrap_content"
+            style="@style/Text" />
+
+        <TextView
+            android:id="@+id/time_text"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            style="@style/Text" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_weight="1"
+        style="@style/VerticalListDivided">
+
+        <TextView
+            android:id="@+id/prompt_text"
+            style="@style/H2_center"
+            android:textColor="@color/accent_3" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            style="@style/HorizontalListDivided">
+
+            <FrameLayout
+                android:id="@+id/prev_btn"
+                style="@style/ImgFrame">
+
+                <ImageView
+                    android:src="@drawable/px_prev"
+                    android:tint="@color/foreground"
+                    android:contentDescription="@string/altdescr_prev_question"
+                    style="@style/Icon24" />
+            </FrameLayout>
+
+            <com.rama.jaguar.BrailleBlock
+                android:id="@+id/braille_display"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <FrameLayout
+                android:id="@+id/next_btn"
+                style="@style/ImgFrame">
+
+                <ImageView
+                    android:src="@drawable/px_next"
+                    app:tint="@color/foreground"
+                    android:contentDescription="@string/altdescr_skip_question"
+                    style="@style/Icon24" />
+            </FrameLayout>
+        </LinearLayout>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_gravity="center"
+                style="@style/VerticalListDivided">
+
+                <LinearLayout
+                    android:id="@+id/typed_row"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    style="@style/HorizontalListDivided" />
+
+                <LinearLayout
+                    android:id="@+id/correct_row"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    style="@style/HorizontalListDivided" />
+            </LinearLayout>
+
+        </HorizontalScrollView>
+    </LinearLayout>
+
+</LinearLayout>

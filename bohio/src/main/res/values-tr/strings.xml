@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Activities -->
+    <string name="activity_settings_label">Ayarlar</string>
+    <string name="activity_about_label">Hakkında</string>
+
+    <!-- H2 -->
+    <string name="h2_color_picker">Renk Seç</string>
+    <!-- H3 -->
+    <string name="h3_contributors">Katkıda Bulunanlar</string>
+    <string name="h3_icons">İkonlar</string>
+    <string name="h3_fonts">Yazı Tipleri</string>
+    <string name="h3_themes">Temalar</string>
+    <string name="h3_language">Dil</string>
+    <string name="h3_system">Sistem</string>
+    <string name="h3_app">Uygulama</string>
+
+    <!-- Button -->
+    <string name="btn_go_back">Geri Dön</string>
+    <string name="btn_apply">Uygula</string>
+    <string name="btn_cancel">İptal</string>
+    <string name="btn_reset">Sıfırla</string>
+    <string name="btn_clear">Temizle</string>
+    <string name="btn_font_custom_pick">Yazı Tipi Dosyası Seç</string>
+    <string name="btn_theme_apply_custom">Özel Temayı Uygula</string>
+    <string name="btn_join_discord">Discord\'a Katıl</string>
+
+    <!-- ColorPicker -->
+    <string name="colorpicker_theme_foreground">Ön Plan</string>
+    <string name="colorpicker_theme_collapsible_header">Daraltılabilir Başlık</string>
+    <string name="colorpicker_theme_h1">H1</string>
+    <string name="colorpicker_theme_icons">İkonlar</string>
+    <string name="colorpicker_theme_accent">Vurgu</string>
+    <string name="colorpicker_theme_background_1">Arka Plan 1</string>
+    <string name="colorpicker_theme_background_2">Arka Plan 2</string>
+    <string name="colorpicker_theme_background_3">Arka Plan 3</string>
+    <string name="colorpicker_theme_background_4">Arka Plan 4</string>
+    <string name="colorpicker_theme_input_background">Giriş Arka Planı</string>
+    <string name="colorpicker_theme_button_1_background">Buton 1 Arka Planı</string>
+    <string name="colorpicker_theme_button_2_background">Buton 2 Arka Planı</string>
+    <string name="colorpicker_theme_danger">Tehlike</string>
+
+    <!-- FilePicker -->
+    <string name="filepicker_font_custom_none">Yazı tipi seçilmedi</string>
+
+    <!-- Radio -->
+    <string name="radio_default">Varsayılan tema</string>
+    <string name="radio_none">Yok</string>
+    <string name="radio_default_system">Varsayılan (Sistem)</string>
+    <string name="radio_language_system_default">Sistem Varsayılanı (Desteklemiyorsa İngilizce olur)</string>
+    <string name="radio_font_custom">Özel yazı tipi</string>
+    <string name="radio_theme_rama">Rama</string>
+    <string name="radio_theme_custom">Özel</string>
+
+    <!-- Checkbox -->
+    <string name="checkbox_show_system_bar">Sistem çubuğunu göster</string>
+    <string name="checkbox_always_show_search_bar">Her zaman görünür</string>
+    <string name="checkbox_prevent_home_screen_rotation">Ekran döndürmeyi kilitle</string>
+
+    <!-- InputLabel -->
+    <string name="label_zoom">Yakınlaştırma</string>
+
+    <!-- Toasts -->
+    <string name="toast_invalid_color">Geçersiz renk</string>
+
+    <!-- APP -->
+    <string name="app_background_tasks_desc">Arka Planda işimiz yok!</string>
+    <string name="app_ads_desc">Reklamsız</string>
+    <string name="app_trackers_desc">Takip etmiyoruz!</string>
+    <string name="app_offline_desc">Tamamen Çevrimdışı</string>
+</resources>
