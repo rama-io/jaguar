@@ -1,5 +1,5 @@
 ![Preview](./docs/img/jaguar_header_1200x630.svg)
-![Badge](https://rama-io.github.io/img/badge_jaguar.svg)
+<!-- ![Badge](https://rama-io.github.io/img/badge_jaguar.svg) -->
 
 # Jaguar
 
@@ -9,9 +9,9 @@
 
 ## Screenshots
 
-| Focus | Stopwatch | About |
+| Stage | Settings | About |
 | - | - | - |
-| ![Home](./fastlane/metadata/android/en-US/images/phoneScreenshots/1.png) | ![Stopwatch](./fastlane/metadata/android/en-US/images/phoneScreenshots/2.png) | ![About](./fastlane/metadata/android/en-US/images/phoneScreenshots/3.png) |
+| ![Stage](./fastlane/metadata/android/en-US/images/phoneScreenshots/1.png) | ![Settings](./fastlane/metadata/android/en-US/images/phoneScreenshots/2.png) | ![About](./fastlane/metadata/android/en-US/images/phoneScreenshots/3.png) |
 
 ---
 
@@ -21,10 +21,10 @@
   <a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/rama-io/jaguar">
     <img src="https://rama-io.github.io/img/obtainium.svg" alt="Get jaguar From Obtainium">
   </a>
-  &nbsp;
+  <!-- &nbsp;
   <a href="https://f-droid.org/app/com.rama.jaguar">
     <img src="https://rama-io.github.io/img/fdroid.svg" alt="Get jaguar From F-Droid">
-  </a>
+  </a> -->
   &nbsp;
   <a href="https://github.com/rama-io/jaguar/releases/latest">
     <img src="https://rama-io.github.io/img/github.svg" alt="Get jaguar From GitHub">
