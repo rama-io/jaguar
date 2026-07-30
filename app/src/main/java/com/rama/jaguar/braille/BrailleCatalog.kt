@@ -2,6 +2,7 @@ package com.rama.jaguar.braille
 
 import com.rama.jaguar.braille.en.EnglishBraillePack
 import com.rama.jaguar.braille.es.SpanishBraillePack
+import com.rama.jaguar.braille.pt.PortugueseBraillePack
 
 /** Central registry mapping each [BrailleLanguage] to its [BrailleLanguagePack]. */
 object BrailleCatalog {
@@ -9,6 +10,7 @@ object BrailleCatalog {
     private val packs: Map<BrailleLanguage, BrailleLanguagePack> = mapOf(
         BrailleLanguage.ENGLISH to EnglishBraillePack,
         BrailleLanguage.SPANISH to SpanishBraillePack,
+        BrailleLanguage.PORTUGUESE to PortugueseBraillePack,
     )
 
     fun packFor(language: BrailleLanguage): BrailleLanguagePack =

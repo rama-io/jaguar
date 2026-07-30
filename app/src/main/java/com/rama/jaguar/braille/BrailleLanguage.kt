@@ -2,7 +2,8 @@ package com.rama.jaguar.braille
 
 enum class BrailleLanguage(val code: String, val displayName: String) {
     ENGLISH("en", "English"),
-    SPANISH("es", "Spanish");
+    SPANISH("es", "Spanish"),
+    PORTUGUESE("pt", "Portuguese");
 
     companion object {
         val DEFAULT = ENGLISH

@@ -34,6 +34,12 @@ class StageSelectorActivity : CsActivity() {
                 1
             )
         }
+        findViewById<View>(R.id.lvl1_por).setOnClickListener {
+            startStage(
+                BrailleLanguage.PORTUGUESE,
+                1
+            )
+        }
     }
 
     private fun startStage(language: BrailleLanguage, grade: Int) {
