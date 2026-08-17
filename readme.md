@@ -1,5 +1,5 @@
 ![Preview](./docs/img/jaguar_header_1200x630.svg)
-<!-- ![Badge](https://rama-io.github.io/img/badge_jaguar.svg) -->
+![Badge](https://rama-io.github.io/img/badge_jaguar.svg)
 
 # Jaguar
 
