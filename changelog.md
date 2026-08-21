@@ -1,5 +1,9 @@
 # Changelog
 
+## 3
+
+- Rework about page
+
 ## 2
 
 - Add catalogue
