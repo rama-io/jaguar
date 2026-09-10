@@ -1,5 +1,9 @@
 # Changelog
 
+## 4
+
+- Prevent unwanted permissions to ever be added by third parties dependencies
+
 ## 3
 
 - Rework about page
